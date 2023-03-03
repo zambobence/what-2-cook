@@ -1,38 +1,394 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Roboto', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
+body {
+  background-image: url('./background_2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: rgba(183, 196, 207, 0.752);
+  background-blend-mode: overlay;
+}
+
+header > * {
+  backdrop-filter: blur(3px);
+}
+
+
+.container {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  color: initial;
+}
+
+ul {
+  list-style: none;
+}
+
+.card-img-top {
+  height: 25vw;
+}
+
+.card {
+  margin: 0;
+  border-radius: .3rem;
+  overflow: hidden;
+}
+
+.card,
+.recipe-body {
+  background-color: rgba(240, 248, 255, 0.786);
+}
+
+.recipe-body {
+  padding: 1.5rem;
+}
+
+.recipe-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recipe-img-container {
+  height: 40vh;
+}
+
+.icon {
+  margin-right: .5rem;
+}
+
+.card-top > img {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: .5rem;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.no-result,
+.card {
+  grid-column: 1 / -1;
+  max-width: 330px;
+}
+
+.no-result {
+  justify-self: center;
+  margin-top: 5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.f-center {
+  justify-content: center;
+  gap: 1rem;
+}
+
+
+
+.f-space-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.recipe-img-container,
+.card {
+  position: relative;
+}
+
+.bookmark-icon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem
+}
+
+.btn-icon {
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+}
+
+.icon,
+.btn-icon,
+button {
+  cursor: pointer;
+}
+
+
+.nav-menu {
+  flex-flow: row wrap;
+}
+
+.nav-menu li {
+  flex-basis: 100%;
+}
+
+header .flex {
+  flex-flow: row wrap;
+}
+
+nav {
+  flex-basis: 100%;
+}
+
+.logo {
+  padding: .5rem 0;
+}
+
+.nav-menu li i {
+  margin-right: .5rem;
+}
+
+.searchbar {
+  margin: 1rem 0;
+  max-width: 400px;
+}
+
+
+
+.item-selector input,
+.searchbar input {
+  width: 70%;
+  background-color: rgba(240, 248, 255, 0.367);
+}
+
+.searchbar input::placeholder {
+  color: black;
+}
+
+.searchbar input:active {
+  background-color: aliceblue;
+}
+
+
+.btn,
+input {
+  padding: .5rem;
+  font-size: 1rem;
+} 
+
+
+
+.sort-container,
+.sort-select {
+  border: none;
+  font-size: 1rem;
+}
+
+.sort-select {
+  margin-left: .5rem;
+  background: transparent;
+  border-bottom: 1px solid black;
+}
+
+.sort-container {
+  margin: 1rem 0;
+}
+
+.ingredient-list-box {
+  gap: .5rem
+}
+
+.ingredient-list-box li {
+  border-radius: 3rem;
+  padding: .5rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  background-color: rgb(255, 178, 83);
+  font-weight: 400;
+}
+
+.ingredient-list-box button {
+  padding-inline: .5rem;
+}
+
+.item-selector {
+  margin-bottom: 2rem
+}
+
+.item-selector > * {
+  margin: 0 1rem .5rem 0;
+}
+
+.item-selector label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+
+.ingredient-input {
+  max-width: 300px;
+}
+
+input,
+.item-selector input {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+img {
+  width: 100%;
+}
+
+li,
+p {
+  font-weight: 300;
+}
+
+h2 {
+  font-weight: 500;
+  font-size: 1.3rem;
+  padding: .5rem 0;
+  margin: 1rem 0;
+}
+
+
+.nutritionbox {
+  margin: .5rem 0 0;
+  max-width: 360px;
+  margin: .5rem auto;
+}
+
+h1 {
+  margin: .5rem 0;
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.ingred-simple {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.btn {
+  border-radius: .3rem;
+  border: 1px solid orange;
+  background-color: orange;
+  color: rgb(47, 47, 47);
+}
+
+.recipe-page h3 {
+  margin: 1.5rem 0 .5rem;
+}
+
+
+.ingredient-list {
+  list-style: circle;
+  padding-left: 2rem;
+}
+
+.ingredient-list li {
+  padding: .25rem 0;
+}
+
+
+
+button:disabled {
+  opacity: .5;
+}
+
+.instructions {
+  line-height: 1.5;
+}
+
+
+
+.card {
+  border: 1px solid rgb(144, 125, 125)
+}
+
+header {
+  background-color: #252525
+}
+
+.logo a {
+  font-weight: 400;
+}
+
+.toggler,
+.logo a,
+.nav-menu li:hover  > *  {
+  color: orange;
+}
+
+.nav-menu li a {
+  cursor: pointer;
+  font-weight: 400;
+}
+
+.nav-menu li a,
+header > *  {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.nav-menu li {
+  padding: .5rem 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card-body {
+  padding: .5rem;
+}
+
+
+
+
+@media (min-width: 550px){
+  .card {
+  grid-column: span 6;
+}
+
+
+nav,
+.nav-menu li {
+  flex-basis: auto;
+}
+
+.toggler {
+  display: none;
+}
+
+.nav-menu {
+  gap: .5rem
+}
+.nav-menu li i {
+  display: none;
+}
+}
+
+
+@media (min-width: 850px){
+.card {
+  grid-column: span 4
+};
+}
+
+
+@media (min-width: 1000px) {
+.card {
+  grid-column: span 3;
+}
 }
