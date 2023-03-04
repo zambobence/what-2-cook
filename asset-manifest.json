@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/what-2-cook/static/css/main.954cfa63.css",
+    "main.js": "/what-2-cook/static/js/main.edd0ac74.js",
+    "static/js/787.67a6f38e.chunk.js": "/what-2-cook/static/js/787.67a6f38e.chunk.js",
+    "static/media/background_2.jpg": "/what-2-cook/static/media/background_2.0245110d55b1c9bb1496.jpg",
+    "static/media/logo.svg": "/what-2-cook/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/what-2-cook/index.html",
+    "main.954cfa63.css.map": "/what-2-cook/static/css/main.954cfa63.css.map",
+    "main.edd0ac74.js.map": "/what-2-cook/static/js/main.edd0ac74.js.map",
+    "787.67a6f38e.chunk.js.map": "/what-2-cook/static/js/787.67a6f38e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.954cfa63.css",
+    "static/js/main.edd0ac74.js"
+  ]
+}
