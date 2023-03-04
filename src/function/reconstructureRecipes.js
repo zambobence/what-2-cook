@@ -7,7 +7,7 @@ export const restructureRecipes = (obj) => {
     }
 
 
-    let nutritionObj = obj.nutrition.nutrients
+    let nutritionObj = obj?.nutrition.nutrients
 
 
     const caloriesObj = getNutritionalValue(nutritionObj, 'Calories')
