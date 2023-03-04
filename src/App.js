@@ -21,9 +21,9 @@ function App() {
       <Header toggleExpand={toggleExpand} expand={expand} setExpand={setExpand}/>
       <main>
       <Routes>
-        <Route path='/what-2-cook/' element={<Home />} />
-        <Route path='/bookmarked' element={<Bookmarked />} />
-        <Route path='/byingridient' element={<RecipeByIngredient />} />
+        <Route exact path='/what-2-cook' element={<Home />} />
+        <Route path='/what-2-cook/bookmarked' element={<Bookmarked />} />
+        <Route path='/what-2-cook/byingridient' element={<RecipeByIngredient />} />
         <Route path='/recipe/:recipeID' element={<RecipePage />} />
       </Routes>
       </main>
