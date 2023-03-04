@@ -3,6 +3,7 @@ import Searchbar from '../components/Searchbar'
 import Card from '../components/Card'
 import { restructureRecipes } from '../function/reconstructureRecipes'
 import fetchRecipe from '../function/fetchRecipe'
+import SortComponent from '../components/SortComponent'
 
 function Home() {
     const [searchTerm, setSearchTerm] = useState('')
@@ -39,18 +40,12 @@ function Home() {
   return (
     <div className='container'>
         <Searchbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} toggleSearch={()=>handleFetch()}/>
-        {searchTerm && searchTriggered && <h3>{searchResults.length} results for the searchterm {searchTerm}</h3>}
-        
-        <div className='sort-container'>
-            <span>Sort recipes by</span>
-            <select className='sort-select' onChange={(e)=> setSortBy(e.target.value)} value={sortBy}>
-                <option value={''}>{' '}</option>
-                <option value={'caloriesObj'}>calories</option>
-                <option value={'proteinObj'}>protein</option>
-                <option value={'carbsObj'}>carbs</option>
-                <option value={'fatObj'}>fat</option>
-            </select>
-        </div>
+        {searchTerm && searchTriggered && 
+            <>
+                <SortComponent sortBy={sortBy} setSortBy={setSortBy} />
+                <h3 className='search-result'>{searchResults.length} results for the searchterm {searchTerm}</h3>
+            </>
+        }
 
         <div className='grid'>
             {searchTriggered && searchResults.length < 1 ? 

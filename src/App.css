@@ -10,23 +10,22 @@ body {
 
 
 body {
-  background-image: url('./background_2.jpg');
+  background-image: url('./img/background_2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  min-height: 100vh;
   background-color: rgba(183, 196, 207, 0.752);
   background-blend-mode: overlay;
 }
 
-header > * {
-  backdrop-filter: blur(3px);
+main {
+  min-height: 100vh;
+  margin-bottom: 3rem;
 }
-
 
 .container {
   width: 90%;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -106,8 +105,6 @@ ul {
   gap: 1rem;
 }
 
-
-
 .f-space-between {
   justify-content: space-between;
 }
@@ -139,13 +136,16 @@ button {
   cursor: pointer;
 }
 
-
 .nav-menu {
   flex-flow: row wrap;
 }
 
 .nav-menu li {
   flex-basis: 100%;
+}
+
+.nav-menu li:last-of-type {
+  margin-bottom: .5rem;
 }
 
 header .flex {
@@ -158,23 +158,45 @@ nav {
 
 .logo {
   padding: .5rem 0;
+  font-size: 1.2rem;
 }
 
 .nav-menu li i {
   margin-right: .5rem;
 }
 
+.input-container,
 .searchbar {
   margin: 1rem 0;
-  max-width: 400px;
+  max-width: 500px;
+  flex-direction: row;
+}
+
+.searchbar {
+  margin-inline: auto ;
 }
 
 
+.search-input {
+  width: 100%;
+}
+
+.ingredient-input {
+  width: 70%;
+}
+
+.input-container .btn {
+  width: 30%;
+}
 
 .item-selector input,
 .searchbar input {
-  width: 70%;
   background-color: rgba(240, 248, 255, 0.367);
+}
+
+.item-selector label {
+  display: block;
+  width: 100%;
 }
 
 .searchbar input::placeholder {
@@ -206,12 +228,14 @@ input {
   border-bottom: 1px solid black;
 }
 
+.search-result,
 .sort-container {
   margin: 1rem 0;
 }
 
 .ingredient-list-box {
-  gap: .5rem
+  gap: .5rem;
+  margin: 1.5rem 0;
 }
 
 .ingredient-list-box li {
@@ -231,18 +255,11 @@ input {
   margin-bottom: 2rem
 }
 
-.item-selector > * {
-  margin: 0 1rem .5rem 0;
-}
-
 .item-selector label {
   display: inline-block;
   margin-bottom: .5rem;
 }
 
-.ingredient-input {
-  max-width: 300px;
-}
 
 input,
 .item-selector input {
@@ -266,11 +283,20 @@ h2 {
   margin: 1rem 0;
 }
 
+.card h2 {
+  margin: .5rem 0 0;
+}
+
 
 .nutritionbox {
   margin: .5rem 0 0;
   max-width: 360px;
   margin: .5rem auto;
+  gap: .5rem
+}
+
+.nutritionbox p {
+  font-size: .8rem;
 }
 
 h1 {
@@ -315,14 +341,33 @@ button:disabled {
   line-height: 1.5;
 }
 
-
+.instructions ol {
+  padding-left: 1.5rem;
+}
 
 .card {
   border: 1px solid rgb(144, 125, 125)
 }
 
-header {
+header,
+footer {
   background-color: #252525
+}
+
+footer p {
+  padding: 1rem;
+  text-align: center;
+  color: white;
+}
+
+footer a {
+  color: orange;
+}
+
+.layout {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
 }
 
 .logo a {
@@ -353,7 +398,16 @@ header > *  {
   padding: .5rem;
 }
 
+.nav-menu {
+  transform: scale(1, 0);
+  display: none;
+  transform-origin: top;
+}
 
+.expanded .nav-menu {
+  transform: scale(1,1);
+  display: flex;
+}
 
 
 @media (min-width: 550px){
@@ -372,18 +426,26 @@ nav,
 }
 
 .nav-menu {
-  gap: .5rem
+  gap: 1.5rem
 }
 .nav-menu li i {
   display: none;
 }
+
+.nav-menu {
+  transform: scale(1,1);
+  display: flex;
 }
 
+.nav-menu li:last-of-type {
+  margin-bottom: auto;
+}
+}
 
 @media (min-width: 850px){
 .card {
   grid-column: span 4
-};
+}
 }
 
 

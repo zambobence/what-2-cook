@@ -7,17 +7,28 @@ import Bookmarked from './pages/Bookmarked';
 import Home from './pages/Home'
 import RecipeByIngredient from './pages/RecipeByIngredient';
 import RecipePage from './pages/RecipePage';
+import Footer from './components/Footer';
+import { useState } from 'react';
 function App() {
+  const [expand, setExpand] = useState(false)
+
+  const toggleExpand = () => {
+    setExpand(prevState => !prevState)
+  }
+
   return (
-    <div className="App">
-      <Header />
+    <div className="layout">
+      <Header toggleExpand={toggleExpand} expand={expand} setExpand={setExpand}/>
+      <main>
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route path='/bookmarked' element={<Bookmarked />} />
         <Route path='/byingridient' element={<RecipeByIngredient />} />
         <Route path='/recipe/:recipeID' element={<RecipePage />} />
       </Routes>
-          </div>
+      </main>
+      <Footer />
+      </div>
   );
 }
 

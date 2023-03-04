@@ -22,6 +22,7 @@ const DatalistArray = ({options, setOptions, handleSearch}) => {
   return (
     <div className="item-selector">
       <label htmlFor="input-field">Select ingredients:</label>
+      <div className="flex input-container">
       <input
         className="ingredient-input"
         type="text"
@@ -37,6 +38,7 @@ const DatalistArray = ({options, setOptions, handleSearch}) => {
         ))}
       </datalist>
       <button className="btn" disabled={!inputValue} onClick={handleAddOption}>Add option</button>
+      </div>
       <button className="btn" disabled={options.length < 1} onClick={()=>handleSearch()}>Search</button>
       <ul className="ingredient-list-box flex">
         {options.map((option) => (

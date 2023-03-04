@@ -2,11 +2,11 @@ import React, {useContext} from 'react'
 import { Link } from 'react-router-dom'
 import { RecipeContext } from '../context/RecipeContext'
 import NutritionBox from './NutritionBox'
+import TimeCalBox from './TimeCalBox'
 
 
 function Card({data}) {
     const {title, image, readyInMinutes, nutrition, sourceUrl, id} = data
-    const {nutrients} = nutrition
 
     const {addBookmarked, bookmarkedList, removeBookmarked} = useContext(RecipeContext)
 
@@ -14,6 +14,7 @@ function Card({data}) {
         let data = arr.find(e => e.name === nutrient_name)
         return data.amount
     }
+    
     console.log(title)
 
      return (
@@ -23,10 +24,8 @@ function Card({data}) {
             <img src={image} className="" alt="..." />
         </div>
         <div className='card-body'>
-            <div className='flex f-center'>
-                <p><i className="fa-regular fa-clock icon"></i>{readyInMinutes}</p>
-                <p><i className="fa-solid fa-fire icon"></i>{getNutritionalValue(nutrients, 'Calories')}</p>
-            </div>
+            <TimeCalBox data={data} />
+
 
             <NutritionBox 
                 protein={data.proteinObj}

@@ -4,7 +4,8 @@ import NutritionBox from '../components/NutritionBox'
 import { restructureRecipes } from '../function/reconstructureRecipes'
 import { RecipeContext } from '../context/RecipeContext'
 import fetchRecipe from '../function/fetchRecipe'
-function RecipePage({}) {
+import TimeCalBox from '../components/TimeCalBox'
+function RecipePage() {
 
   const {addBookmarked, bookmarkedList, removeBookmarked} = useContext(RecipeContext)
   const [data, setData] = useState({})
@@ -24,7 +25,6 @@ function RecipePage({}) {
   return (
     <div className='container recipe-page'>
       <h1>{data.title}</h1>
-
       <div className='recipe-img-container'>
         <img src={data.image} alt='food' className='recipe-img' />
         {bookmarkedList.some(e => e.id === data.id) ?
@@ -38,12 +38,8 @@ function RecipePage({}) {
         }  
       </div>
       <div className='recipe-body'>
-        <div className='flex f-center'>
-          <p><i className="fa-regular fa-clock icon"></i>{data.readyInMinutes} min</p>
-          <p><i className="fa-solid fa-fire icon"></i>{data.caloriesObj?.amount}</p>
-          <p><i class="fa-solid fa-utensils icon"></i>{data.servings}</p>
-        </div>
         
+        <TimeCalBox data={data} />
         <NutritionBox 
           protein={data?.proteinObj}
           fat={data?.fatObj}
@@ -55,7 +51,12 @@ function RecipePage({}) {
         </ul>
         
         <h3>Instructions:</h3>
+        {data?.instructions?.includes('<ol>') ? 
+        <div className='instructions'dangerouslySetInnerHTML={{ __html: data?.instructions}}>
+        </div>
+        : 
         <p className='instructions'>{data?.instructions}</p>
+      }
       </div>
     </div>
   )

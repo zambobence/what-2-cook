@@ -10,7 +10,7 @@ function CardSimple({data}) {
   return (
     <div className='card card-simple'>
         <div className='card-top'>
-            <img src={image} alt='recipe image' />
+            <img src={image} alt='recipe illustration' />
         </div>
         <div className='card-body'>
         <h2><Link to={`/recipe/${id}`}>{title}</Link></h2>
