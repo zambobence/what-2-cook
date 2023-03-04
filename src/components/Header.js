@@ -5,7 +5,7 @@ function Header({expand, toggleExpand, setExpand}) {
   return (
     <header>
         <div className='container flex align-center f-space-between'>
-            <p className='logo' onClick={()=>setExpand(false)} ><Link to="/what2cook">What2Cook</Link></p>
+            <p className='logo' onClick={()=>setExpand(false)} ><Link to="/what-2-cook/">What2Cook</Link></p>
             <button className='btn-icon toggler' onClick={()=>toggleExpand()}>
               <i class="fa-solid fa-bars"></i>
             </button>
