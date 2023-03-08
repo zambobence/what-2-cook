@@ -14,25 +14,18 @@ function Card({data}) {
         let data = arr.find(e => e.name === nutrient_name)
         return data.amount
     }
-    
-    console.log(title)
-
      return (
-
-    <div className='card'>
+      <div className='card'>
         <div className='card-top'>
-            <img src={image} className="" alt="..." />
+          <img src={image} className="" alt="..." />
         </div>
         <div className='card-body'>
             <TimeCalBox data={data} />
-
-
             <NutritionBox 
                 protein={data.proteinObj}
                 fat={data.fatObj}
                 carbs={data.carbsObj}
             />
-
             <h2><Link to={`/recipe/${id}`}>{title}</Link></h2>
 {/* 
             <a href={`whatsapp://send?text=I have found this new recipe: ${sourceUrl}`}       data-action="share/whatsapp/share"  
@@ -49,8 +42,8 @@ function Card({data}) {
             }
         </div>
   
-</div>
- )
+      </div>
+    )
 }
 
 export default Card
