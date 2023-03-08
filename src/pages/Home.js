@@ -43,13 +43,13 @@ function Home() {
         {searchTerm && searchTriggered && 
             <>
                 <SortComponent sortBy={sortBy} setSortBy={setSortBy} />
-                <h3 className='search-result'>{searchResults.length} results for the searchterm {searchTerm}</h3>
+                <h3 className='search-result'>{searchResults.length} results for the search term {searchTerm}</h3>
             </>
         }
 
         <div className='grid'>
             {searchTriggered && searchResults.length < 1 ? 
-                <h4 className='no-result'>No recipes found, please refine your sreach. </h4>
+                <h4 className='no-result'>No recipes found, please refine your search. </h4>
             :
             <>
                 {searchResults.map((e, i) => <Card key={i} data={e} />)}

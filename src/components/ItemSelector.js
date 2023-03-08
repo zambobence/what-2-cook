@@ -37,7 +37,7 @@ const DatalistArray = ({options, setOptions, handleSearch}) => {
           <option key={option.id} value={option.label} />
         ))}
       </datalist>
-      <button className="btn" disabled={!inputValue} onClick={handleAddOption}>Add option</button>
+      <button className="btn" disabled={!inputValue} onClick={handleAddOption}>Add</button>
       </div>
       <button className="btn" disabled={options.length < 1} onClick={()=>handleSearch()}>Search</button>
       <ul className="ingredient-list-box flex">
