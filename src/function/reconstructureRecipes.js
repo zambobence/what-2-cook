@@ -2,7 +2,7 @@ export const restructureRecipes = (obj) => {
 
 
     const getNutritionalValue = (arr, nutrient_name) => {
-        let data = arr.find(e => e.name === nutrient_name)
+        let data = arr?.find(e => e?.name === nutrient_name)
         return data
     }
 

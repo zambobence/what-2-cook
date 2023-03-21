@@ -1,24 +1,30 @@
 import React, {useEffect, useState} from 'react'
 import ItemSelector from '../components/ItemSelector'
 import CardSimple from '../components/CardSimple'
-import fetchRecipe from '../function/fetchRecipe';
+import useFetch from '../customHooks/useFetch';
 function RecipeByIngredient() {
 
     const [options, setOptions] = useState([]);
     const [searchResults, setSearchResults] = useState([])
     const [searchTriggered, setSearchTriggered] = useState(false)
-
+    const {data, loading, error, fetchRecipe} = useFetch()
+    
+    
+    
+    
     const handleFetch = async () => {
-        const ingredientString = options.length < 2 ? options[0] : options.join(',+')
+        let ingredientString = options.length < 2 ? options[0] : options.join(',+')
         const urlParam = `findByIngredients?ingredients=${ingredientString}`
-        fetchRecipe(urlParam).then( res => {
-            setSearchResults(res)
-        })
+        fetchRecipe(urlParam)
         setSearchTriggered(true)
     }
 
     useEffect(() => {
-        options.length === 0 && setSearchTriggered(false)
+        setSearchResults(data)
+    },[data])
+
+    useEffect(() => {
+        options?.length === 0 && setSearchTriggered(false)
     },[options])
 
     return (
@@ -27,7 +33,7 @@ function RecipeByIngredient() {
         <ItemSelector options={options} handleSearch={handleFetch} setOptions={setOptions} />
         
         <div className='grid'>
-        {searchTriggered && searchResults.length < 1 ? 
+        {searchTriggered && searchResults?.length < 1 ? 
                 <h4 className='no-result'>No recipes found, please refine your search. </h4>
             :
             <>

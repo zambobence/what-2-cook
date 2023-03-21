@@ -3,25 +3,30 @@ import { useParams } from 'react-router-dom'
 import NutritionBox from '../components/NutritionBox'
 import { restructureRecipes } from '../function/reconstructureRecipes'
 import { RecipeContext } from '../context/RecipeContext'
-import fetchRecipe from '../function/fetchRecipe'
 import TimeCalBox from '../components/TimeCalBox'
+import useFetch from '../customHooks/useFetch'
 function RecipePage() {
 
   const {addBookmarked, bookmarkedList, removeBookmarked} = useContext(RecipeContext)
   const [data, setData] = useState({})
-  const {recipeID} = useParams() 
+  const {recipeID} = useParams()
 
-  const handleFetch = async () => {
-    const urlParam = `${recipeID}/information?includeNutrition=true`
-    fetchRecipe(urlParam).then( res => {
-      let newData = restructureRecipes(res)
-      setData(newData) 
-    })
-  }
+  let urlParam = `${recipeID}/information?includeNutrition=true`
+  const {data: recipeData, loading, error, fetchRecipe} = useFetch()
 
 
-  useEffect(() => {handleFetch()}, [])
+  console.log(recipeData)
 
+
+  useEffect(() => {
+    fetchRecipe(urlParam)
+  },[])
+
+  useEffect(() => {
+    let newData = restructureRecipes(recipeData)
+    setData(newData) 
+  },[recipeData])
+  
   return (
     <div className='container recipe-page'>
       <h1>{data.title}</h1>

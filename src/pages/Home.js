@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Searchbar from '../components/Searchbar'
 import Card from '../components/Card'
 import { restructureRecipes } from '../function/reconstructureRecipes'
-import fetchRecipe from '../function/fetchRecipe'
+import useFetch from '../customHooks/useFetch'
 import SortComponent from '../components/SortComponent'
 
 function Home() {
@@ -11,9 +11,9 @@ function Home() {
     const [sortBy, setSortBy] = useState('')
     const [searchTriggered, setSearchTriggered] = useState(false)
 
+    const {data, loading, error, fetchRecipe} = useFetch()
     const sortByFunction = (dummy) => {
         let sorted = [...searchResults].sort((a,b) => a[dummy].amount - b[dummy].amount);
-        console.log('The sorted')
         setSearchResults(sorted)
     }
 
@@ -21,13 +21,15 @@ function Home() {
 
     const handleFetch = async () => {
         const urlParam = `complexSearch?query=${searchTerm}&addRecipeNutrition=true&instructionsRequired=true&number=10&`
-        fetchRecipe(urlParam).then( res => {
-            let newData = res.results.map(e => restructureRecipes(e))
-            console.log(newData)
-            setSearchResults(newData)
-            setSearchTriggered(true)
-        })
+        fetchRecipe(urlParam)
     }
+
+    useEffect(() => {
+        let newData = data?.results?.map(e => restructureRecipes(e))
+        setSearchResults(newData)
+            setSearchTriggered(true)
+
+    },[data])
 
     
 
@@ -43,16 +45,16 @@ function Home() {
         {searchTerm && searchTriggered && 
             <>
                 <SortComponent sortBy={sortBy} setSortBy={setSortBy} />
-                <h3 className='search-result'>{searchResults.length} results for the search term {searchTerm}</h3>
+                <h3 className='search-result'>{searchResults?.length} results for the search term {searchTerm}</h3>
             </>
         }
 
         <div className='grid'>
-            {searchTriggered && searchResults.length < 1 ? 
+            {searchTriggered && searchResults?.length < 1 ? 
                 <h4 className='no-result'>No recipes found, please refine your search. </h4>
             :
             <>
-                {searchResults.map((e, i) => <Card key={i} data={e} />)}
+                {searchResults?.map((e, i) => <Card key={i} data={e} />)}
             </>
             }
             </div>
