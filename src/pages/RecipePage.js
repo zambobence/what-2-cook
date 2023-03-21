@@ -5,6 +5,7 @@ import { restructureRecipes } from '../function/reconstructureRecipes'
 import { RecipeContext } from '../context/RecipeContext'
 import TimeCalBox from '../components/TimeCalBox'
 import useFetch from '../customHooks/useFetch'
+import Instructions from '../components/Instructions'
 function RecipePage() {
 
   const {addBookmarked, bookmarkedList, removeBookmarked} = useContext(RecipeContext)
@@ -55,13 +56,8 @@ function RecipePage() {
           {data.extendedIngredients?.map(e => <li>{e?.original}</li>)}
         </ul>
         
-        <h3>Instructions:</h3>
-        {data?.instructions?.includes('<ol>') ? 
-        <div className='instructions'dangerouslySetInnerHTML={{ __html: data?.instructions}}>
-        </div>
-        : 
-        <p className='instructions'>{data?.instructions}</p>
-      }
+        <Instructions instructions={data?.instructions} />
+
       </div>
     </div>
   )
